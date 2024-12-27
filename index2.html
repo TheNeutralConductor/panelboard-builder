@@ -14,26 +14,14 @@
     <section class="section">
       <h1 class="title">Panelboard Builder</h1>
       <h2 class="subtitle">
-        A simple container to divide your page into <strong>sections</strong>,
-        like the one you're currently reading.
+        An electrical distribution panelboard application to configure custom
+        builds.
       </h2>
-      <!-- <div class="block">
-        <div class="radios breadcrumb flat">
-          <input type="radio" name="rsvp" class="radiotab" id="tab1" checked />
-          <label for="tab1" class="radio">Stockboard Selector</label>
-          <input type="radio" name="rsvp" class="radiotab" id="tab2" />
-          <label for="tab2" class="radio">Panelboards Selection</label>
-          <input type="radio" name="rsvp" class="radiotab" id="tab3" />
-          <label for="tab3" class="radio">Circuit Protection Selection</label>
-          <input type="radio" name="rsvp" class="radiotab" id="tab4" />
-          <label for="tab4" class="radio">Summary</label>
-        </div>
-      </div> -->
       <div class="block">
         <div class="breadcrumb flat">
-          <a href="#" class="active" data-breadcrumb="1">Stockboard Selector</a>
-          <a href="#" data-breadcrumb="2">Panelboards Selection</a>
-          <a href="#" data-breadcrumb="3">Circuit Protection Selection</a>
+          <a href="#" class="active" data-breadcrumb="1">Initial Setup</a>
+          <a href="#" data-breadcrumb="2">Features</a>
+          <a href="#" data-breadcrumb="3">Construction</a>
           <a href="#" data-breadcrumb="4">Summary</a>
           <a href="#" data-breadcrumb="5">Contact Information</a>
           <a href="#" data-breadcrumb="6">Confirmation</a>
@@ -41,17 +29,14 @@
       </div>
     </section>
     <section class="section pt-0" data-content="1">
-      <h2 class="subtitle is-size-3">Stockboard Selector</h2>
-      <h2 class="subtitle">
-        A simple container to divide your page into <strong>sections</strong>,
-        like the one you're currently reading.
-      </h2>
+      <h2 class="subtitle is-size-3">Initial Setup</h2>
+      <h2 class="subtitle">Define the initial panelboard requirements.</h2>
       <div class="block">
         <div class="columns">
           <div
-            class="column has-text-centered border-line-right is-one-fifth IP-column"
+            class="column has-text-centered border-line-right is-2 IP-column column-title"
           >
-            <h3 class="subtitle is-4 has-text-weight-semibold heading">
+            <h3 class="subtitle is-4 has-text-weight-semibold ipheading">
               IP Rating
             </h3>
             <div class="columns is-flex-direction-column">
@@ -79,8 +64,12 @@
               </div>
             </div>
           </div>
-          <div class="column has-text-centered border-line-right is-one-fifth">
-            <h3 class="subtitle is-4 has-text-weight-semibold">Panel Colour</h3>
+          <div
+            class="column has-text-centered border-line-right is-2 column-title"
+          >
+            <h3 class="subtitle is-4 has-text-weight-semibold colourheading">
+              Panel Colour
+            </h3>
             <div class="columns is-flex-direction-column">
               <div class="column">
                 <div
@@ -113,8 +102,29 @@
               </div>
             </div>
           </div>
-          <div class="column has-text-centered border-line-right">
-            <h3 class="subtitle is-4 has-text-weight-semibold">Chassis Size</h3>
+          <div
+            class="column has-text-centered border-line-right is-2 column-title"
+          >
+            <h3 class="subtitle is-4 has-text-weight-semibold dinrailheading">
+              Extra DIN Rail
+            </h3>
+            <div class="block">
+              <select id="din-rail">
+                <option value="Standard">** Standard Layout **</option>
+                <option value="ExtraDIN">Extra DIN Rail</option>
+              </select>
+            </div>
+            <div class="block extra-din-rail">
+              <img
+                class="mt-1 extra-din-rail-image"
+                src="/svg/extra-dinrail/pb_DIN-RAIL-Standard.svg"
+              />
+            </div>
+          </div>
+          <div class="column has-text-centered border-line-right column-title">
+            <h3 class="subtitle is-4 has-text-weight-semibold chassisheading">
+              Chassis Size
+            </h3>
             <div class="block chassis-size">
               <a class="button" data-chassis="24">24</a>
               <a class="button" data-chassis="36">36</a>
@@ -128,8 +138,12 @@
               <img class="chassis-image" src="" />
             </div>
           </div>
-          <div class="column has-text-centered">
-            <h3 class="subtitle is-4 has-text-weight-semibold">Main Switch</h3>
+          <div
+            class="column has-text-centered border-line-right is-one-fifth column-title"
+          >
+            <h3 class="subtitle is-4 has-text-weight-semibold heading">
+              Main Switch
+            </h3>
             <div class="block">
               <select id="main-switch">
                 <option selected value="NONE">** NO MAIN SWITCH **</option>
@@ -149,41 +163,10 @@
       </div>
     </section>
     <section class="section pt-0 is-hidden" data-content="2">
-      <h2 class="subtitle is-3">Panelboards Selection</h2>
+      <h2 class="subtitle is-3">Features</h2>
+      <h2 class="subtitle">Additional panelboard feature requirements.</h2>
       <div class="block">
         <div class="columns">
-          <div
-            class="column has-text-centered border-line-right is-one-fifth IP-column"
-          >
-            <h3 class="subtitle is-4 has-text-weight-semibold">Gland Plates</h3>
-            <div class="block">
-              <p>Top Gland Plate Selection</p>
-              <select id="top-gland-plate">
-                <option selected value="MildSteel">
-                  Mild Steel (Standard)
-                </option>
-                <option value="Bakelite">Bakelite</option>
-                <option value="Aluminium">Aluminium</option>
-                <option value="Brass">Brass</option>
-              </select>
-              <img
-                class="mt-3 gland-plate-image top-plate"
-                src="/svg/gland-plate/Chassis_Gland_Plate_MildSteel.svg"
-              />
-            </div>
-            <p>Bottom Gland Plate Selection</p>
-            <select id="bottom-gland-plate">
-              <option selected value="MildSteel">Mild Steel (Standard)</option>
-              <option value="Bakelite">Bakelite</option>
-              <option value="Aluminium">Aluminium</option>
-              <option value="Brass">Brass</option>
-            </select>
-
-            <img
-              class="mt-3 gland-plate-image bottom-plate"
-              src="/svg/gland-plate/Chassis_Gland_Plate_MildSteel.svg"
-            />
-          </div>
           <div class="column has-text-centered border-line-right is-one-fifth">
             <h3 class="subtitle is-4 has-text-weight-semibold">Metering</h3>
             <div class="block">
@@ -246,6 +229,138 @@
             </div>
           </div>
           <div class="column has-text-centered border-line-right is-one-fifth">
+            <h3 class="subtitle is-4 has-text-weight-semibold">
+              Surge Diverter
+            </h3>
+            <div class="block">
+              <select id="surge-diverter">
+                <option selected value="NONE">** NO SURGE DIVERTER **</option>
+                <option value="3PN">Type 2 3Pole+N</option>
+              </select>
+            </div>
+            <div class="block surge-block is-hidden">
+              <p class="is-size-6">Type 2 3Pole+N</p>
+              <img
+                class="mt-1 door-handle-image"
+                src="/svg/surge-diverter/pb_Surge-Diverter_3PN.svg"
+              />
+            </div>
+          </div>
+          <div class="column has-text-centered border-line-right is-one-fifth">
+            <h3 class="subtitle is-4 has-text-weight-semibold">
+              Emergency Light Testing
+            </h3>
+            <div class="block">
+              <select id="emergency-light">
+                <option selected value="NONE">
+                  No Emergency Light Testing
+                </option>
+                <option value="Switch">Key Switch Testing</option>
+                <option value="Button">Push Button Testing</option>
+              </select>
+            </div>
+            <div class="block test-circuits is-hidden">
+              <div
+                class="control ml-6 is-flex is-flex-direction-column is-align-items-start"
+              >
+                <label class="radio">
+                  <input type="radio" name="circuits" checked />
+                  4 circuits (Standard)
+                </label>
+                <label class="radio">
+                  <input type="radio" name="circuits" />
+                  8 circuits
+                </label>
+              </div>
+            </div>
+            <div class="block emergency-light-test is-hidden">
+              <img
+                class="mt-1 emergency-light-image"
+                src="/svg/emergency-test/pb_Emergency-Exit-Lighting-Test-Switch.svg"
+              />
+            </div>
+          </div>
+          <div class="column has-text-centered border-line-right is-3">
+            <h3 class="subtitle is-4 has-text-weight-semibold">
+              External Lighting Control
+            </h3>
+            <div class="block">
+              <select id="external-light">
+                <option selected value="NONE">
+                  No security/external lighting control
+                </option>
+                <option value="Auto">Time Clock with AUTO off</option>
+                <option value="Bypass">Time Clock with BYPASS switch</option>
+              </select>
+            </div>
+            <div class="block light-circuits is-hidden">
+              <div
+                class="control ml-6 is-flex is-flex-direction-column is-align-items-start"
+              >
+                <label class="radio">
+                  <input type="radio" name="lights" checked />
+                  2 circuits (Standard) 6 Amps AC5
+                </label>
+                <label class="radio">
+                  <input type="radio" name="lights" />
+                  4 circuits 7 Amps AC5
+                </label>
+                <label class="radio">
+                  <input type="radio" name="lights" />
+                  4 circuits 20 Amps AC5
+                </label>
+              </div>
+            </div>
+            <div class="block light-timer is-hidden">
+              <img
+                class="mt-1 light-timer-image"
+                src="/svg/light-timer/pb_Light-Timer.svg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section pt-0 is-hidden" data-content="3">
+      <h2 class="subtitle is-3">Construction</h2>
+      <h2 class="subtitle">Panelboard construction requirements.</h2>
+      <div class="block">
+        <div class="columns">
+          <div
+            class="column has-text-centered border-line-right is-one-fifth column-title"
+          >
+            <h3 class="subtitle is-4 has-text-weight-semibold">Gland Plates</h3>
+            <div class="block">
+              <p>Top Gland Plate Selection</p>
+              <select id="top-gland-plate">
+                <option selected value="MildSteel">
+                  Mild Steel (Standard)
+                </option>
+                <option value="Bakelite">Bakelite</option>
+                <option value="Aluminium">Aluminium</option>
+                <option value="Brass">Brass</option>
+              </select>
+              <img
+                class="mt-3 gland-plate-image top-plate"
+                src="/svg/gland-plate/Chassis_Gland_Plate_MildSteel.svg"
+              />
+            </div>
+            <p>Bottom Gland Plate Selection</p>
+            <select id="bottom-gland-plate">
+              <option selected value="MildSteel">Mild Steel (Standard)</option>
+              <option value="Bakelite">Bakelite</option>
+              <option value="Aluminium">Aluminium</option>
+              <option value="Brass">Brass</option>
+            </select>
+
+            <img
+              class="mt-3 gland-plate-image bottom-plate"
+              src="/svg/gland-plate/Chassis_Gland_Plate_MildSteel.svg"
+            />
+          </div>
+          <div
+            class="column has-text-centered border-line-right is-one-fifth column-title"
+          >
             <h3 class="subtitle is-4 has-text-weight-semibold">Door Handle</h3>
             <div class="block is-flex is-justify-content-space-between">
               <div class="handle">
@@ -271,92 +386,19 @@
               </div>
             </div>
           </div>
-          <div class="column has-text-centered border-line-right is-one-fifth">
-            <h3 class="subtitle is-4 has-text-weight-semibold">
-              Surge Diverter
-            </h3>
-            <div class="block">
-              <select id="surge-diverter">
-                <option selected value="NONE">** NO SURGE DIVERTER **</option>
-                <option value="3PN">Type 2 3Pole+N</option>
-              </select>
-            </div>
-            <div class="block surge-block is-hidden">
-              <p class="is-size-6">Type 2 3Pole+N</p>
-              <img
-                class="mt-1 door-handle-image"
-                src="/svg/surge-diverter/pb_Surge-Diverter_3PN.svg"
-              />
-            </div>
-          </div>
-          <div class="column has-text-centered border-line-right is-one-fifth">
-            <h3 class="subtitle is-4 has-text-weight-semibold">
-              Extra DIN Rail
-            </h3>
-            <div class="block">
-              <select id="din-rail">
-                <option value="Standard">** Standard Layout **</option>
-                <option value="ExtraDIN">Extra DIN Rail</option>
-              </select>
-            </div>
-            <div class="block extra-din-rail">
-              <img
-                class="mt-1 extra-din-rail-image"
-                src="/svg/extra-dinrail/pb_DIN-RAIL-Standard.svg"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section pt-0 is-hidden" data-content="3">
-      <h2 class="subtitle is-3">Circuit Protection Selection</h2>
-      <div class="block">
-        <div class="columns">
-          <div class="column has-text-centered border-line-right is-one-fifth">
-            <h3 class="subtitle is-4 has-text-weight-semibold">
-              Emergency Light Testing
-            </h3>
-            <div class="block">
-              <select id="emergency-light">
-                <option selected value="NONE">
-                  No Emergency Light Testing
-                </option>
-                <option value="Switch">Key Switch Testing</option>
-                <option value="Button">Push Button Testing</option>
-              </select>
-            </div>
-            <div class="block test-circuits">
-              <div
-                class="control ml-6 is-flex is-flex-direction-column is-align-items-start"
-              >
-                <label class="radio">
-                  <input type="radio" name="circuits" checked />
-                  4 circuits (Standard)
-                </label>
-                <label class="radio">
-                  <input type="radio" name="circuits" />
-                  8 circuits
-                </label>
-              </div>
-            </div>
-            <div class="block emergency-light-test">
-              <img
-                class="mt-1 emergency-light-image"
-                src="/svg/emergency-test/pb_Emergency-Exit-Lighting-Test-Switch.svg"
-              />
-            </div>
-          </div>
-          <div class="column has-text-centered border-line-right is-one-fifth">
+          <div
+            class="column has-text-centered border-line-right is-one-fifth column-title"
+          >
             <h3 class="subtitle is-4 has-text-weight-semibold">XXXXXX</h3>
           </div>
-          <div class="column has-text-centered border-line-right is-one-fifth">
+          <div
+            class="column has-text-centered border-line-right is-one-fifth column-title"
+          >
             <h3 class="subtitle is-4 has-text-weight-semibold">XXXXXX</h3>
           </div>
-          <div class="column has-text-centered border-line-right is-one-fifth">
-            <h3 class="subtitle is-4 has-text-weight-semibold">XXXXXX</h3>
-          </div>
-          <div class="column has-text-centered">
+          <div
+            class="column has-text-centered border-line-right is-one-fifth column-title"
+          >
             <h3 class="subtitle is-4 has-text-weight-semibold">XXXXXX</h3>
           </div>
         </div>

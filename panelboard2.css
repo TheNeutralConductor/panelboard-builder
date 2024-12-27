@@ -76,13 +76,21 @@
 
 .main-switch-image {
   height: 270px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.36);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.36);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.36);
 }
 
 .dual-metering {
   gap: 20px;
+}
+
+.metering-image,
+.main-switch-image,
+.chassis-image,
+.metering-image-triple,
+.door-handle-image,
+.gland-plate-image {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.36);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.36);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.36);
 }
 
 .metering-image-triple {
@@ -104,6 +112,27 @@
 
 .emergency-light-image {
   width: 80%;
+}
+
+.light-timer-image {
+  width: 30%;
+}
+
+/* heading check tick */
+.ipheading.ticked:after,
+.colourheading.ticked:after,
+.chassisheading.ticked:after {
+  content: "\2713";
+  right: 10px;
+  position: absolute;
+  width: 32px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: lime;
+}
+
+.column-title {
+  position: relative;
 }
 
 .breadcrumb {

@@ -21,6 +21,17 @@ const pbEmergencyLightTest = document.getElementById("emergency-light");
 const pbEmergencyLightTestImage = document.querySelector(
   ".emergency-light-image"
 );
+const pbExternalLightTest = document.getElementById("external-light");
+
+pbExternalLightTest.addEventListener("click", (event) => {
+  if (pbExternalLightTest.value === "NONE") {
+    document.querySelector(".light-timer").classList.add("is-hidden");
+    document.querySelector(".light-circuits").classList.add("is-hidden");
+  } else {
+    document.querySelector(".light-timer").classList.remove("is-hidden");
+    document.querySelector(".light-circuits").classList.remove("is-hidden");
+  }
+});
 
 pbExtraDINRail.addEventListener("click", (event) => {
   pbExtraDINRailImage.src = `/svg/extra-dinrail/pb_DIN-RAIL-${pbExtraDINRail.value}.svg`;
@@ -159,11 +170,13 @@ pbChassisSize.forEach((pbchassis) => {
     if (!document.querySelector(`[data-chassis].active`)) {
       // check for null
       event.target.classList.add("active");
+      document.querySelector(".chassisheading").classList.add("ticked");
     } else {
       document
         .querySelector(`[data-chassis].active`)
         .classList.remove("active");
       event.target.classList.add("active");
+      document.querySelector(".chassisheading").classList.add("ticked");
     }
   });
 });
@@ -178,13 +191,16 @@ pbColour.forEach((pbc) => {
       document
         .querySelector(`.pb-colour-circle.active`)
         .classList.remove("active");
+      document.querySelector(".colourheading").classList.remove("ticked");
     } else if (activeExists > 0) {
       document
         .querySelector(`.pb-colour-circle.active`)
         .classList.remove("active");
       event.target.classList.add("active");
+      document.querySelector(".colourheading").classList.add("ticked");
     } else {
       event.target.classList.add("active");
+      document.querySelector(".colourheading").classList.add("ticked");
     }
   });
 });
@@ -195,11 +211,14 @@ IPblock.forEach((ipb) => {
     let activeExists = document.querySelectorAll(".IP-Rating.active").length;
     if (containsActive) {
       document.querySelector(`.IP-Rating.active`).classList.remove("active");
+      document.querySelector(".ipheading").classList.remove("ticked");
     } else if (activeExists > 0) {
       document.querySelector(`.IP-Rating.active`).classList.remove("active");
       event.target.classList.add("active");
+      document.querySelector(".ipheading").classList.add("ticked");
     } else {
       event.target.classList.add("active");
+      document.querySelector(".ipheading").classList.add("ticked");
     }
   });
 });
