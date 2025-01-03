@@ -275,6 +275,113 @@
   display: none;
 }
 
-/* .radiotab:checked + .radio {
+/* ------------------------------------------------------------- */
+.bcparent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.div4 {
+  grid-row: span 3 / span 3;
+}
+
+.div6 {
+  grid-row-start: 4;
+}
+
+.redphase {
+  background-color: crimson;
+  color: white;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.whitephase {
+  background-color: whitesmoke;
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.bluephase {
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.size1 {
+  background-color: violet;
+}
+
+.size3 {
   background-color: aquamarine;
-} */
+}
+
+.bccontainer {
+  display: grid;
+  grid-template-rows: repeat(12, 20px);
+  grid-template-columns: 1fr;
+  gap: 0px;
+  height: 100%;
+}
+
+.phase {
+  line-height: 16px;
+}
+
+.itemType {
+  border: 1px dashed firebrick;
+  position: relative;
+  text-align: center;
+}
+
+.phase.itemType:hover {
+  background-color: aquamarine;
+  border: none;
+}
+
+.itemType:hover::after {
+  content: "+";
+  display: block;
+}
+
+.itemType::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  font-size: 19px;
+  color: red;
+  display: none;
+}
+.itemType.empty {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.phase.itemTypeName {
+  border-bottom: 1px dotted black;
+  font-size: 16px;
+  font-style: italic;
+  color: cadetblue;
+}
+
+.itemType.cbType {
+  background-color: mediumspringgreen;
+}
+
+.Poles1 {
+  grid-row: span 1;
+}
+
+.Poles3 {
+  grid-row: span 3;
+}
+
+.hidePole {
+  display: none;
+}

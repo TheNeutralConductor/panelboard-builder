@@ -22,6 +22,90 @@ const pbEmergencyLightTestImage = document.querySelector(
   ".emergency-light-image"
 );
 const pbExternalLightTest = document.getElementById("external-light");
+const pbCircuitProtection = document.querySelectorAll(
+  ".itemType[data-circuit-number]"
+);
+
+var TOTALPOLES = 24;
+
+const circuitProtection = {
+  0: {
+    type: "empty",
+    size: 1,
+    description: "",
+  },
+  1: {
+    type: "MCB 1P 6kA",
+    size: 1,
+    description: "yy",
+  },
+  2: {
+    type: "MCB 3P 6kA",
+    size: 3,
+    description: "xx",
+  },
+};
+
+pbCircuitProtection.forEach((circuitNo) => {
+  circuitNo.addEventListener("click", (e) => {
+    console.log(e);
+    let totalPolesPerColumn = TOTALPOLES / 2;
+    let circuitNumber = e.target.getAttribute("data-circuit-number");
+    let circProtectionValue = parseInt(
+      e.target.getAttribute("data-circuit-protection")
+    );
+    circProtectionValue++;
+    let THREE_POLE_PERMITTED = false;
+    if (circuitNumber <= totalPolesPerColumn - 3) {
+      THREE_POLE_PERMITTED = true;
+    }
+
+    if (circProtectionValue > 2) {
+      circProtectionValue = 0;
+      e.target.classList.add("empty");
+      e.target.classList.add("Poles1");
+      e.target.classList.remove("cbType");
+      e.target.classList.remove("Poles3");
+      document.querySelector(
+        `.itemTypeName[data-circuit-number="${circuitNumber}"]`
+      ).style.visibility = "hidden";
+    } else {
+      e.target.classList.remove("empty");
+      e.target.classList.add("cbType");
+      if (circuitProtection[circProtectionValue].size == 3) {
+        e.target.classList.remove("Poles1");
+        e.target.classList.add("Poles3");
+        let getNextRow = document
+          .querySelector(
+            `.itemType[data-circuit-number="${parseInt(circuitNumber) + 1}"]`
+          )
+          .getAttribute("data-circuit-protection");
+        let getNextNextRow = document
+          .querySelector(
+            `.itemType[data-circuit-number="${parseInt(circuitNumber) + 2}"]`
+          )
+          .getAttribute("data-circuit-protection");
+        if (getNextRow == 0 && getNextNextRow == 0) {
+          document
+            .querySelector(
+              `.itemType[data-circuit-number="${parseInt(circuitNumber) + 1}"]`
+            )
+            .classList.add("hidePole");
+          document
+            .querySelector(
+              `.itemType[data-circuit-number="${parseInt(circuitNumber) + 2}"]`
+            )
+            .classList.add("hidePole");
+        }
+      }
+      document.querySelector(
+        `.itemTypeName[data-circuit-number="${circuitNumber}"]`
+      ).style.visibility = "visible";
+    }
+    e.target.setAttribute("data-circuit-protection", `${circProtectionValue}`);
+    e.target.innerText = circuitProtection[circProtectionValue].type;
+  });
+});
 
 pbExternalLightTest.addEventListener("click", (event) => {
   if (pbExternalLightTest.value === "NONE") {
@@ -166,6 +250,8 @@ pbBottomGlandPlate.addEventListener("click", (event) => {
 pbChassisSize.forEach((pbchassis) => {
   pbchassis.addEventListener("click", (event) => {
     let selected = event.target.getAttribute("data-chassis");
+    TOTALPOLES = parseInt(selected);
+    createCircuitProtectionGrid(TOTALPOLES);
     pbChassisImage.src = `/svg/chassis/Busbar${selected}.svg`;
     if (!document.querySelector(`[data-chassis].active`)) {
       // check for null
@@ -222,3 +308,44 @@ IPblock.forEach((ipb) => {
     }
   });
 });
+
+function createCircuitProtectionGrid(noOfPoles) {
+  let column2 = noOfPoles / 2 + 1;
+  let gridLocation = document.getElementById("circuit-protection-columns");
+  gridLocation.innerHTML = "";
+  let column1Text = `<div class="column is-2"><div class="bccontainer">`;
+  let column1Selection = `<div class="column is-1"><div class="bccontainer">`;
+  let column1Busbar = `<div class="column is-1"><div class="bccontainer">`;
+  let column2Busbar = `<div class="column is-1"><div class="bccontainer">`;
+  let column2Selection = `<div class="column is-1"><div class="bccontainer">`;
+  let column2Text = `<div class="column is-2"><div class="bccontainer">`;
+  const colors = ["red", "white", "blue"];
+  for (let i = 0; i < column2 - 1; i++) {
+    column1Text += `<div contenteditable="true" class="phase itemTypeName has-text-right Poles1" data-circuit-number="${
+      i + 1
+    }">circuit name here</div>`;
+    column1Selection += `<div class="phase itemType empty" data-circuit-number="${
+      i + 1
+    }" data-block-size="1" data-circuit-protection="0">empty</div>`;
+    const colorIndex = i % colors.length;
+    column1Busbar += `<div class="phase ${colors[colorIndex]}phase">${
+      i + 1
+    }</div>`;
+    column2Busbar += `<div class="phase ${colors[colorIndex]}phase">${
+      i + column2
+    }</div>`;
+    column2Selection += `<div class="phase itemType empty" data-circuit-number="${
+      i + column2
+    }" data-block-size="1" data-circuit-protection="0">empty</div>`;
+    column2Text += `<div contenteditable="true" class="phase itemTypeName has-text-left Poles1" data-circuit-number="${
+      i + column2
+    }">circuit name here</div>`;
+  }
+  column1Text += `</div></div>`;
+  column1Selection += `</div></div>`;
+  column1Busbar += `</div></div>`;
+  column2Busbar += `</div></div>`;
+  column2Selection += `</div></div>`;
+  column2Text += `</div></div>`;
+  gridLocation.innerHTML = `${column1Text}${column1Selection}${column1Busbar}${column2Busbar}${column2Selection}${column2Text}`;
+}
