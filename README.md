@@ -14,3 +14,5 @@ _(You can not complete building a full panelboard at this stage)_
 ![my image](Screenshot1.png)
 
 ![my image](Screenshot2.png)
+
+![my image](Screenshot3.png)
