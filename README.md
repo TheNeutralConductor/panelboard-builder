@@ -11,8 +11,8 @@ _(You can not complete building a full panelboard at this stage)_
 - Uses BULMA CSS Framework 1.0.2
 
 ## Screen shots
-![my image](Screenshot1.png)
+![my image](/screenshots/Screenshot1.png)
 
-![my image](Screenshot2.png)
+![my image](/screenshots/Screenshot2.png)
 
-![my image](Screenshot3.png)
+![my image](/screenshots/Screenshot3.png)
